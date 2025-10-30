@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-title>Upload Shapefile (.zip)</mat-card-title>
+  <mat-card-content>
+    <input type="file" (change)="onFileChange($event)" accept=".zip" />
+    <button mat-raised-button color="primary" (click)="upload()" [disabled]="!selectedFile">Upload</button>
+  </mat-card-content>
+</mat-card>
+
+<div class="map-wrapper" style="margin-top:16px; height: 70vh;">
+  <app-openlayers-map #mapComp></app-openlayers-map>
+</div>
+
+<mat-card *ngIf="meta">
+  <mat-card-title>Metadata</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let key of metaKeys">{{ key }}: {{ meta[key] }}</div>
+  </mat-card-content>
+</mat-card>
